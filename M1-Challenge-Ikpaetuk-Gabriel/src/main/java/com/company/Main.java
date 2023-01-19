@@ -25,34 +25,17 @@ public class Main {
             new String[]{"1", "Wayne Enterprises", "10000", "12-01-2021"}
     );
 
-    public static Customer makeCustomer(int id, String name) {
-        Customer customer = new Customer();
-        customer.setId(id);
-        customer.setName(name);
-        return customer;
-    }
-
     public static void main(String[] args) {
         //Update this
+
+        // Uses map to keep track of accounts,
+        // makes it easier to track accounts that have been created already
         Map<Integer, Customer> customersMap = new HashMap<>();
-        int id;
-        String name;
-        int charge;
-        String chargeDate;
-
-        for (String[] customerData : customerData) {
-            id = Integer.parseInt(customerData[0]);
-            name = customerData[1];
-            charge = Integer.parseInt(customerData[2]);
-            chargeDate = customerData[3];
-
-            customersMap.putIfAbsent(id, makeCustomer(id, name));
-
-            AccountRecord accountRecord = new AccountRecord();
-            accountRecord.setCharge(charge);
-            accountRecord.setChargeDate(chargeDate);
-            customersMap.get(id).addCharge(accountRecord);
-        }
+        customerData.forEach(data -> customersMap
+                // Adds the customer to the Map if the key/customer does not exist
+                .computeIfAbsent(Integer.valueOf(data[0]), key -> makeCustomer(Integer.parseInt(data[0]), data[1]))
+                .addCharge(makeAccount(Integer.parseInt(data[2]), data[3]))
+        );
 
         // Filters out the customer accounts with positive values
         List<Customer> positiveAccounts = getPositiveCustomerAccounts(customersMap.values());
@@ -64,19 +47,36 @@ public class Main {
         System.out.println("Positive accounts:");
         positiveAccounts.forEach(System.out::println);
 
-
         // Display the negative customer accounts
         System.out.println("\n");
         System.out.println("Negative accounts:");
         negativeAccounts.forEach(System.out::println);
     }
 
+    // Utility method for creating a Customer
+    public static Customer makeCustomer(int id, String name) {
+        Customer customer = new Customer();
+        customer.setId(id);
+        customer.setName(name);
+        return customer;
+    }
+
+    // Utility method for creating a AccountRecord
+    public static AccountRecord makeAccount(int charge, String chargeDate) {
+        AccountRecord accountRecord = new AccountRecord();
+        accountRecord.setCharge(charge);
+        accountRecord.setChargeDate(chargeDate);
+        return accountRecord;
+    }
+
+    // Utility method for getting the list of Customers with negative balance accounts
     private static List<Customer> getNegativeCustomerAccounts(Collection<Customer> customers) {
         return customers.stream()
                 .filter(customer -> customer.getBalance() < 0)
                 .collect(Collectors.toList());
     }
 
+    // Utility method for getting the list of Customers with positive balance accounts
     private static List<Customer> getPositiveCustomerAccounts(Collection<Customer> customers) {
         return customers.stream()
                 .filter(customer -> customer.getBalance() >= 0)
