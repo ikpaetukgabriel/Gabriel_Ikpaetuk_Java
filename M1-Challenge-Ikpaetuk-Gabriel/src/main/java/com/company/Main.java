@@ -30,6 +30,8 @@ public class Main {
 
         // Uses map to keep track of accounts,
         // makes it easier to track accounts that have been created already
+        // If accounts have been initially created adds the necessary account record
+        // Else creates the customer before adding the necessary account record
         Map<Integer, Customer> customersMap = new HashMap<>();
         customerData.forEach(data -> customersMap
                 // Adds the customer to the Map if the key/customer does not exist
