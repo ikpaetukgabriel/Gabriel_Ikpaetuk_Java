@@ -54,7 +54,7 @@ public class Main {
     }
 
     // Utility method for creating a Customer
-    public static Customer makeCustomer(int id, String name) {
+    private static Customer makeCustomer(int id, String name) {
         Customer customer = new Customer();
         customer.setId(id);
         customer.setName(name);
@@ -62,7 +62,7 @@ public class Main {
     }
 
     // Utility method for creating a AccountRecord
-    public static AccountRecord makeAccount(int charge, String chargeDate) {
+    private static AccountRecord makeAccount(int charge, String chargeDate) {
         AccountRecord accountRecord = new AccountRecord();
         accountRecord.setCharge(charge);
         accountRecord.setChargeDate(chargeDate);
