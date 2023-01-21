@@ -43,10 +43,9 @@ public class Customer {
     @Override
     public String toString() {
         //update this
-        return String.format(
-                "Customer ID: %s \n" +
-                "Customer name: %s \n" +
-                "Customer balance: %d",
+        return String.format("Customer ID: %s \n" +
+                        "Customer name: %s \n" +
+                        "Customer balance: %d",
                 this.id, this.name, this.getBalance());
     }
 }

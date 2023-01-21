@@ -39,11 +39,14 @@ public class Main {
                 .addCharge(makeAccount(Integer.parseInt(data[2]), data[3]))
         );
 
+        // List of customers -> only one object for each customer
+        List<Customer> customerList = new ArrayList<>(customersMap.values());
+
         // Filters out the customer accounts with positive values
-        List<Customer> positiveAccounts = getPositiveCustomerAccounts(customersMap.values());
+        List<Customer> positiveAccounts = getPositiveCustomerAccounts(customerList);
 
         // Filters out the customer accounts with negative values
-        List<Customer> negativeAccounts = getNegativeCustomerAccounts(customersMap.values());
+        List<Customer> negativeAccounts = getNegativeCustomerAccounts(customerList);
 
         // Display the Positive customer accounts
         System.out.println("Positive accounts:");
@@ -72,14 +75,14 @@ public class Main {
     }
 
     // Utility method for getting the list of Customers with negative balance accounts
-    private static List<Customer> getNegativeCustomerAccounts(Collection<Customer> customers) {
+    private static List<Customer> getNegativeCustomerAccounts(List<Customer> customers) {
         return customers.stream()
                 .filter(customer -> customer.getBalance() < 0)
                 .collect(Collectors.toList());
     }
 
     // Utility method for getting the list of Customers with positive balance accounts
-    private static List<Customer> getPositiveCustomerAccounts(Collection<Customer> customers) {
+    private static List<Customer> getPositiveCustomerAccounts(List<Customer> customers) {
         return customers.stream()
                 .filter(customer -> customer.getBalance() >= 0)
                 .collect(Collectors.toList());
