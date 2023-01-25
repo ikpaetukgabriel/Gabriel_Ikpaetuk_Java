@@ -41,14 +41,20 @@ public class ChatterBookController {
 
     }
 
-    // List of all users
+    /**
+     * @return -> List of all users
+     */
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public List<User> getUsers() {
         return userList;
     }
 
-    // A single user by username
+
+    /**
+     * @param username -> User's name
+     * @return A single user by username
+     */
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public User getUserByUsername(@RequestParam String username) {
@@ -58,7 +64,11 @@ public class ChatterBookController {
                 .orElse(null);
     }
 
-    // A list of chatterPosts for a user by username
+
+    /**
+     * @param username -> User's name
+     * @return A list of chatterPosts for a user by username
+     */
     @RequestMapping(value = "/user/chatter-post", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public List<ChatterPost> getUserChatterPosts(@RequestParam String username) {
