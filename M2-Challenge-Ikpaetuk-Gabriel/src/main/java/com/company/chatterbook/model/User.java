@@ -6,9 +6,8 @@ public class User {
     private String name;
     private List<ChatterPost> chatterPosts;
 
-    public User(String name, List<ChatterPost> chatterPosts) {
+    public User(String name) {
         this.name = name;
-        this.chatterPosts = chatterPosts;
     }
 
     public String getName() {
