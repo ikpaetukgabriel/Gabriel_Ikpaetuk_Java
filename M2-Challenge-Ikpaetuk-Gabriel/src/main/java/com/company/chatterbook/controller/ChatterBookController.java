@@ -1,7 +1,7 @@
 package com.company.chatterbook.controller;
 
-import com.company.chatterbook.models.ChatterPost;
-import com.company.chatterbook.models.User;
+import com.company.chatterbook.model.ChatterPost;
+import com.company.chatterbook.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -78,5 +78,4 @@ public class ChatterBookController {
                 .map(User::getChatterPosts)
                 .orElse(null);
     }
-
 }

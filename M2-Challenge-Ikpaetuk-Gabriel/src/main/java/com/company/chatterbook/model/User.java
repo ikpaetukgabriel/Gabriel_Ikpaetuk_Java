@@ -1,4 +1,4 @@
-package com.company.chatterbook.models;
+package com.company.chatterbook.model;
 
 import java.util.List;
 

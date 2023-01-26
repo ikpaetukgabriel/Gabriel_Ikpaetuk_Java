@@ -1,4 +1,4 @@
-package com.company.chatterbook.models;
+package com.company.chatterbook.model;
 
 public class ChatterPost {
     private String text;
