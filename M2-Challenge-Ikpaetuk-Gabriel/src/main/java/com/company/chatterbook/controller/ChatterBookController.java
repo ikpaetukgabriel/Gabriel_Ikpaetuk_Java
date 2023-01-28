@@ -55,9 +55,9 @@ public class ChatterBookController {
      * @param username -> User's name
      * @return A single user by username
      */
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/name/{username}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public User getUserByUsername(@RequestParam String username) {
+    public User getUserByUsername(@PathVariable String username) {
         return userList.stream()
                 .filter(user -> user.getName().equals(username))
                 .findFirst()
@@ -69,9 +69,9 @@ public class ChatterBookController {
      * @param username -> User's name
      * @return A list of chatterPosts for a user by username
      */
-    @RequestMapping(value = "/user/chatter-post", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/post/{username}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public List<ChatterPost> getUserChatterPosts(@RequestParam String username) {
+    public List<ChatterPost> getUserChatterPosts(@PathVariable String username) {
         return userList.stream()
                 .filter(user -> user.getName().equals(username))
                 .findFirst()

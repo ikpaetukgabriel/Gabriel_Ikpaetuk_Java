@@ -20,32 +20,14 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
-  /user:
-    get:
-      tags:
-        - chatter-book-controller
-      operationId: getUserByUsername
-      parameters:
-        - name: username
-          in: query
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/User'
-  /user/chatter-post:
+  /users/post/{username}:
     get:
       tags:
         - chatter-book-controller
       operationId: getUserChatterPosts
       parameters:
         - name: username
-          in: query
+          in: path
           required: true
           schema:
             type: string
@@ -58,6 +40,24 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ChatterPost'
+  /users/name/{username}:
+    get:
+      tags:
+        - chatter-book-controller
+      operationId: getUserByUsername
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
 components:
   schemas:
     ChatterPost:
