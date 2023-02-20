@@ -31,7 +31,6 @@ public class CustomerController {
         return customerRepository.findAll();
     }
 
-    // TODO: Add customers as a list or a single customer?
 
     /**
      * Adds a new customer to the database.
