@@ -1,10 +1,20 @@
 package com.company.customerdataservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "customer")
 public class Customer implements Serializable {
-    private int customerId;
+    @Id
+    @Column(name = "customer_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     private String firstName;
     private String lastName;
     private String email;
@@ -17,12 +27,12 @@ public class Customer implements Serializable {
     private String postalCode;
     private String country;
 
-    public int getCustomerId() {
-        return customerId;
+    public int getId() {
+        return id;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setId(int customerId) {
+        this.id = customerId;
     }
 
     public String getFirstName() {
@@ -118,7 +128,7 @@ public class Customer implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return getCustomerId() == customer.getCustomerId() &&
+        return getId() == customer.getId() &&
                 Objects.equals(getFirstName(), customer.getFirstName()) &&
                 Objects.equals(getLastName(), customer.getLastName()) &&
                 Objects.equals(getEmail(), customer.getEmail()) &&
@@ -134,7 +144,7 @@ public class Customer implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCustomerId(),
+        return Objects.hash(getId(),
                 getFirstName(),
                 getLastName(),
                 getEmail(),
@@ -151,7 +161,7 @@ public class Customer implements Serializable {
     @Override
     public String toString() {
         return "Customer{" +
-                "customerId=" + customerId +
+                "customerId=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
