@@ -8,10 +8,10 @@ import java.util.Objects;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer implements Serializable {
     @Id
-    @Column(name = "customer_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
