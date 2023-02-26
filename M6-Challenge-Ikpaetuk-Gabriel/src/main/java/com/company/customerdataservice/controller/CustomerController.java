@@ -3,8 +3,10 @@ package com.company.customerdataservice.controller;
 import com.company.customerdataservice.model.Customer;
 import com.company.customerdataservice.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -90,6 +92,10 @@ public class CustomerController {
     @DeleteMapping("/customers/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCustomer(@PathVariable int id) {
-        customerRepository.deleteById(id);
+        try {
+            customerRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException ex) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found", ex);
+        }
     }
 }
