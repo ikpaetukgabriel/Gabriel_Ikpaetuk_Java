@@ -34,11 +34,6 @@ public class CustomerControllerTest {
 
     private final ObjectMapper mapper = new ObjectMapper();
 
-    @Before
-    public void setUp() {
-        customerRepository.deleteAll();
-    }
-
     @Test
     public void shouldAddCustomer() throws Exception {
         // Arrange ...
@@ -115,6 +110,7 @@ public class CustomerControllerTest {
 
     @Test
     public void shouldDeleteCustomer() throws Exception {
+        // Act ...
         mockMvc.perform(delete("/customers/1"))
                 .andExpect(status().isNoContent());
     }
