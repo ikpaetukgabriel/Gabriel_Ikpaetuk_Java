@@ -21,17 +21,16 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
-    // TODO: Remove
-
-    /**
-     * Retrieves all customers from the database.
-     *
-     * @return a list of all customers in the database.
-     */
-    @GetMapping("/customers")
-    public List<Customer> getCustomer() {
-        return customerRepository.findAll();
-    }
+//    /**
+//     * Retrieves all customers from the database.
+//     * This method is only intended for testing purposes and is not intended for external use.
+//     *
+//     * @return a list of all customers in the database.
+//     */
+//    @GetMapping("/customers")
+//    public List<Customer> getAllCustomersForTesting() {
+//        return customerRepository.findAll();
+//    }
 
 
     /**

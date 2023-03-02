@@ -67,6 +67,7 @@ public class CustomerRepositoryTest {
                 .orElse(null));
     }
 
+
     @Test
     public void shouldGetCustomerById() {
         // Arrange...
@@ -118,7 +119,6 @@ public class CustomerRepositoryTest {
 
         //Assert...
         assertFalse(savedCustomer.isPresent());
-
     }
 
 

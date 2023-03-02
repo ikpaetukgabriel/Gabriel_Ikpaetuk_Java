@@ -3,7 +3,6 @@ package com.company.customerdataservice.controller;
 import com.company.customerdataservice.model.Customer;
 import com.company.customerdataservice.repository.CustomerRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

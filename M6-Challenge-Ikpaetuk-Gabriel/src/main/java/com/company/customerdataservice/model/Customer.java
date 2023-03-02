@@ -27,6 +27,24 @@ public class Customer implements Serializable {
     private String postalCode;
     private String country;
 
+    public Customer() {
+    }
+
+    public Customer(int id, String firstName, String lastName, String email, String company, String phone, String address1, String address2, String city, String state, String postalCode, String country) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.company = company;
+        this.phone = phone;
+        this.address1 = address1;
+        this.address2 = address2;
+        this.city = city;
+        this.state = state;
+        this.postalCode = postalCode;
+        this.country = country;
+    }
+
     public int getId() {
         return id;
     }
